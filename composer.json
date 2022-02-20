@@ -3,9 +3,9 @@
     "description": "This is a Laravel package for integrating QuickBooks Online API.",
     "type": "library",
     "require": {
-        "php": "^7.4",
-        "illuminate/support": "8.x-dev",
-        "quickbooks/v3-php-sdk": "dev-master"
+        "php": "^7.3|^8.0",
+        "illuminate/support": "^7.0|^8.0",
+        "quickbooks/v3-php-sdk": "^6.0"
     },
     "license": "MIT",
     "autoload": {
