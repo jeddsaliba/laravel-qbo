@@ -8,9 +8,9 @@ class QboAuthController extends Controller
 {
     public function auth()
     {
-        return response(['message' => 'QuickBooks Online SDK.', 'payload' => [
+        return [
             'authorizationCodeUrl' => $this->_authUrl
-        ]], 200);
+        ];
     }
     public function tokenSave(Request $request) {
         $accessToken = $this->_OAuth2LoginHelper->exchangeAuthorizationCodeForToken($request->code, $request->realmId);
