@@ -22,7 +22,7 @@ class QboAuthController extends Controller
             'x_refresh_token_expires_in' => $accessToken->getRefreshTokenExpiresAt(),
             'expires_in' => $accessToken->getAccessTokenExpiresAt()
         ];
-        $save = $this->_qboConfig->save($request, $accessToken);
+        $store = $this->_qboConfig->store($request, $accessToken);
         return response(['message' => 'QuickBooks Online SDK.', 'payload' => [
             'config' => $accessToken
         ]], 200);
