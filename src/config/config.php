@@ -9,7 +9,9 @@ return [
     'redirect_uri' => env('QBO_REDIRECT_URI', NULL),
     'scope' => env('QBO_SCOPE', NULL),
     'base_url' => env('QBO_BASE_URL', NULL),
-    'company_id' => env('QBO_COMPANY_ID', NULL)
+    'company_id' => env('QBO_COMPANY_ID', NULL),
+    'prefix' => 'qbo',
+    'middleware' => ['api'],
 ];
 
 ?>

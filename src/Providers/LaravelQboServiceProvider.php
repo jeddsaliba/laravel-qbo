@@ -3,6 +3,7 @@
 namespace Pns\LaravelQbo\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class LaravelQboServiceProvider extends ServiceProvider
 {
@@ -20,10 +21,24 @@ class LaravelQboServiceProvider extends ServiceProvider
                 ], 'migrations');
             }
         }
+        $this->registerRoutes();
     }
     public function register()
     {
 
+    }
+    protected function registerRoutes()
+    {
+        Route::group($this->routeConfiguration(), function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+        });
+    }
+    protected function routeConfiguration()
+    {
+        return [
+            'prefix' => config('qbo.prefix'),
+            'middleware' => config('qbo.middleware'),
+        ];
     }
 }
 ?>
