@@ -22,7 +22,7 @@ class QboConfig extends Model
   // Disable Laravel's mass assignment protection
   protected $guarded = [];
 
-  public function save($request, $accessToken) {
+  public function store($request, $accessToken) {
     $saveQboConfig = QboConfig::find(1);
     if ($saveQboConfig) {
         if ($request->code) {

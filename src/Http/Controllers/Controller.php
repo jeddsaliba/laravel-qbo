@@ -51,7 +51,7 @@ class Controller extends BaseController
                 'x_refresh_token_expires_in' => $refreshedAccessTokenObj->getRefreshTokenExpiresAt(),
                 'expires_in' => $refreshedAccessTokenObj->getAccessTokenExpiresAt()
             ];
-            $save = $this->_qboConfig->save($request, $accessToken);
+            $save = $this->_qboConfig->store($request, $accessToken);
             $this->_configArray['accessTokenKey'] = $refreshedAccessTokenObj->getAccessToken();
             $this->_dataService = DataService::Configure($this->_configArray);
         }
