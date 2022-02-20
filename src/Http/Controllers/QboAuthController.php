@@ -2,9 +2,7 @@
 
 namespace Pns\LaravelQbo\Http\Controllers;
 
-use QuickBooksOnline\API\DataService\DataService;
 use Illuminate\Http\Request;
-use Pns\LaravelQbo\Models\QboConfig;
 
 class QboAuthController extends Controller
 {
