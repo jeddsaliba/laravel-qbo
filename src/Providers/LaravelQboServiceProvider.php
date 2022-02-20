@@ -8,9 +8,11 @@ class LaravelQboServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/../../Config/qbo.php' => config_path('qbo.php'),
-        ]);
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+              __DIR__.'/../config/config.php' => config_path('qbo.php'),
+            ], 'config');
+        }
     }
     public function register()
     {
