@@ -17,12 +17,12 @@ class Controller extends BaseController
     ) {
         $this->_qboConfig = $QboConfig;
         $this->_configArray = [
-            'auth_mode' => config('auth_mode'),
-            'ClientID' => config('client_id'),
-            'ClientSecret' => config('client_secret'),
-            'RedirectURI' => config('redirect_uri'),
-            'scope' => config('scope'),
-            'baseUrl' => config('base_url'),
+            'auth_mode' => config('qbo.auth_mode'),
+            'ClientID' => config('qbo.client_id'),
+            'ClientSecret' => config('qbo.client_secret'),
+            'RedirectURI' => config('qbo.redirect_uri'),
+            'scope' => config('qbo.scope'),
+            'baseUrl' => config('qbo.base_url'),
             'accessTokenKey' => null,
             'refreshTokenKey' => null,
             'QBORealmID' => null
