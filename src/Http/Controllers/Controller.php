@@ -42,18 +42,28 @@ class Controller extends BaseController
         $refreshedAccessTokenObj = $this->_OAuth2LoginHelper->refreshAccessTokenWithRefreshToken($config->refresh_token);
         $error = $this->_OAuth2LoginHelper->getLastError();
         if ($error) {
-
-        } else {
-            $this->_dataService->updateOAuth2Token($refreshedAccessTokenObj);
-            $accessToken = [
-                'access_token' => $refreshedAccessTokenObj->getAccessToken(),
-                'refresh_token' => $refreshedAccessTokenObj->getRefreshToken(),
-                'x_refresh_token_expires_in' => $refreshedAccessTokenObj->getRefreshTokenExpiresAt(),
-                'expires_in' => $refreshedAccessTokenObj->getAccessTokenExpiresAt()
+            return [
+                'message' => $error->getIntuitErrorMessage()
             ];
-            $save = $this->_qboConfig->store($request, $accessToken);
-            $this->_configArray['accessTokenKey'] = $refreshedAccessTokenObj->getAccessToken();
-            $this->_dataService = DataService::Configure($this->_configArray);
         }
+        $this->_dataService->updateOAuth2Token($refreshedAccessTokenObj);
+        $accessToken = [
+            'access_token' => $refreshedAccessTokenObj->getAccessToken(),
+            'refresh_token' => $refreshedAccessTokenObj->getRefreshToken(),
+            'x_refresh_token_expires_in' => $refreshedAccessTokenObj->getRefreshTokenExpiresAt(),
+            'expires_in' => $refreshedAccessTokenObj->getAccessTokenExpiresAt()
+        ];
+        $save = $this->_qboConfig->store($request, $accessToken);
+        if (!$save) {
+            return [
+                'message' => 'Could not save token. Please try again.'
+            ];
+        }
+        $this->_configArray['accessTokenKey'] = $refreshedAccessTokenObj->getAccessToken();
+        $this->_dataService = DataService::Configure($this->_configArray);
+        return [
+            'message' => 'Token refreshed.',
+            'accessToken' => $accessToken
+        ];
     }
 }

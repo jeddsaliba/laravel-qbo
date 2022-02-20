@@ -15,7 +15,12 @@ class QboAuthController extends Controller
     public function tokenSave(Request $request) {
         $accessToken = $this->_OAuth2LoginHelper->exchangeAuthorizationCodeForToken($request->code, $request->realmId);
         $this->_dataService->updateOAuth2Token($accessToken);
-
+        $error = $this->_dataService->getLastError();
+        if ($error) {
+            return [
+                'message' => $error->getIntuitErrorMessage()
+            ];
+        }
         $accessToken = [
             'access_token' => $accessToken->getAccessToken(),
             'refresh_token' => $accessToken->getRefreshToken(),
@@ -23,8 +28,14 @@ class QboAuthController extends Controller
             'expires_in' => $accessToken->getAccessTokenExpiresAt()
         ];
         $store = $this->_qboConfig->store($request, $accessToken);
-        return response(['message' => 'QuickBooks Online SDK.', 'payload' => [
-            'config' => $accessToken
-        ]], 200);
+        if (!$save) {
+            return [
+                'message' => 'Could not save token. Please try again.'
+            ];
+        }
+        return [
+            'message' => 'Token refreshed.',
+            'accessToken' => $accessToken
+        ];
     }
 }
