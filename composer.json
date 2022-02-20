@@ -26,7 +26,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Pns\\LaravelQbo\\LaravelQboServiceProvider"
+                "Pns\\LaravelQbo\\Providers\\LaravelQboServiceProvider"
             ]
         }
     }

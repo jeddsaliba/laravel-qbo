@@ -1,6 +1,6 @@
 <?php
 
-namespace Pns\LaravelQbo;
+namespace Pns\LaravelQbo\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
