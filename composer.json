@@ -27,7 +27,10 @@
         "laravel": {
             "providers": [
                 "Pns\\LaravelQbo\\Providers\\LaravelQboServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Qbo": "Pns\\LaravelQbo\\Facade"
+            }
         }
     }
 }
