@@ -15,7 +15,7 @@ class LaravelQboServiceProvider extends ServiceProvider
             ], 'config');
             if (!class_exists('CreateQboConfigTable')) {
                 $this->publishes([
-                  __DIR__ . '/../database/migrations/create_qbo_config_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_qbo_config_table.php'),
+                  __DIR__ . '/../database/migrations/create_qbo_config_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_qbo_config_table.php'),
                   // you can add any number of migrations here
                 ], 'migrations');
             }
