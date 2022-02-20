@@ -47,6 +47,12 @@ class Controller extends BaseController
             ];
         }
         $this->_dataService->updateOAuth2Token($refreshedAccessTokenObj);
+        $error = $this->_dataService->getLastError();
+        if ($error) {
+            return [
+                'message' => $error->getIntuitErrorMessage()
+            ];
+        }
         $accessToken = [
             'access_token' => $refreshedAccessTokenObj->getAccessToken(),
             'refresh_token' => $refreshedAccessTokenObj->getRefreshToken(),
