@@ -1,0 +1,23 @@
+{
+    "name": "pns/laravel-qbo",
+    "description": "This is a Laravel package for integrating QuickBooks Online API.",
+    "type": "library",
+    "require": {
+        "php": "^7.4",
+        "illuminate/support": "8.x-dev",
+        "quickbooks/v3-php-sdk": "dev-master"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Pns\\LaravelQbo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jedd Saliba",
+            "email": "jeddsaliba@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
