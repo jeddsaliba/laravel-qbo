@@ -14,12 +14,6 @@ class QboAuthController extends Controller
     }
     public function tokenSave(Request $request) {
         $accessToken = $this->_OAuth2LoginHelper->exchangeAuthorizationCodeForToken($request->code, $request->realmId);
-        $error = $accessToken->getLastError();
-        if ($error) {
-            return [
-                'message' => $error->getIntuitErrorMessage()
-            ];
-        }
         $this->_dataService->updateOAuth2Token($accessToken);
         $error = $this->_dataService->getLastError();
         if ($error) {
@@ -34,7 +28,7 @@ class QboAuthController extends Controller
             'expires_in' => $accessToken->getAccessTokenExpiresAt()
         ];
         $store = $this->_qboConfig->store($request, $accessToken);
-        if (!$save) {
+        if (!$store) {
             return [
                 'message' => 'Could not save token. Please try again.'
             ];

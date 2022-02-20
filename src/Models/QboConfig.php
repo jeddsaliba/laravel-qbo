@@ -19,6 +19,12 @@ class QboConfig extends Model
     'x_refresh_token_expires_in',
     'expires_in'
   ];
+  
+  protected $hidden = [
+    'created_at',
+    'updated_at'
+  ];
+
   // Disable Laravel's mass assignment protection
   protected $guarded = [];
 
