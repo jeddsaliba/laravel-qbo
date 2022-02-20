@@ -14,7 +14,7 @@ class QboAuthController extends Controller
     }
     public function tokenSave(Request $request) {
         $accessToken = $this->_OAuth2LoginHelper->exchangeAuthorizationCodeForToken($request->code, $request->realmId);
-        $error = $this->_OAuth2LoginHelper->getLastError();
+        $error = $accessToken->getLastError();
         if ($error) {
             return [
                 'message' => $error->getIntuitErrorMessage()
