@@ -40,16 +40,10 @@ class LaravelQboServiceProvider extends ServiceProvider
     }
     protected function registerMigrations()
     {
-        if (!class_exists('CreateQboConfigTable')) {
-            $this->publishes([
-                __DIR__ . '/../database/migrations/create_qbo_config_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_qbo_config_table.php'),
-            ], 'migrations');
-        }
-        if (!class_exists('CreateQboInvoiceTable')) {
-            $this->publishes([
-                __DIR__ . '/../database/migrations/create_qbo_invoices_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_qbo_invoices_table.php')
-            ], 'migrations');
-        }
+        $this->publishes([
+            __DIR__ . '/../database/migrations/create_qbo_config_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_qbo_config_table.php'),
+            __DIR__ . '/../database/migrations/create_qbo_invoices_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_qbo_invoices_table.php')
+        ], 'migrations');
     }
 }
 ?>
