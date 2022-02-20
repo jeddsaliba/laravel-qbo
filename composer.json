@@ -19,5 +19,12 @@
             "email": "jeddsaliba@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pns\\LaravelQbo\\Providers\\LaravelQboServiceProvider"
+            ]
+        }
+    }
 }
