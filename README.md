@@ -46,18 +46,20 @@ In order to run this package, you will need to add the following environment var
 - Authentication
 - Company Profile
     * View
-    * Update
 - Invoice
-    * Generate
+    * Create
+    * View
+    * Delete
+    * List
     * Send To Email
 - Customer
     * Create
-    * Update
     * View
     * Delete
+    * List
 ## Support
 For support, email jeddsaliba@gmail.com or join our Slack channel.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/icons/butterfly.svg?sanitize=true" width="100">
 
-FLY HIGH BUTTERFLY!
+*Fly high, butterfly!*
