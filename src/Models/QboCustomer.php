@@ -101,7 +101,7 @@ class QboCustomer extends Model
                 'qbo_email_address' => $store->PrimaryEmailAddr->Address,
                 'qbo_notes' => $store->Notes,
                 'qbo_website' => $store->WebAddr,
-                'qbo_active' => filter_var($store->status, FILTER_VALIDATE_BOOLEAN),
+                'qbo_active' => filter_var($store->Active, FILTER_VALIDATE_BOOLEAN),
                 'qbo_company_name' => $store->CompanyName,
                 'qbo_balance' => $store->Balance,
                 'qbo_is_project' => filter_var($store->IsProject, FILTER_VALIDATE_BOOLEAN)
