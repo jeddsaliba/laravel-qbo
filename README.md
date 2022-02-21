@@ -48,7 +48,7 @@ https://developer.intuit.com/app/developer/homepage
 or follow the steps below
 
 ### Generating Environment Variables
-Log in to your QuickBooks Online account at https://accounts.intuit.com
+1. Log in to your QuickBooks Online account at https://accounts.intuit.com
 
 After logging in, go to https://developer.intuit.com/app/developer/sandbox in order to create a new sandbox company.
 
