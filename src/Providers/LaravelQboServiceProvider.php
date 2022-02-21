@@ -42,6 +42,7 @@ class LaravelQboServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../database/migrations/create_qbo_config_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_qbo_config_table.php'),
+            __DIR__ . '/../database/migrations/create_qbo_customers_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_qbo_customers_table.php'),
             __DIR__ . '/../database/migrations/create_qbo_invoices_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_qbo_invoices_table.php')
         ], 'migrations');
     }
