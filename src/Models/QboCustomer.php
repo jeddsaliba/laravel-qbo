@@ -66,9 +66,9 @@ class QboCustomer extends Model
                "Address" => $request->qbo_email_address,
             ],
             "Balance" => $request->qbo_balance,
-            "Active" => $request->qbo_active,
+            "Active" => filter_var($request->qbo_active, FILTER_VALIDATE_BOOLEAN),
             "WebAddr" => $request->qbo_website,
-            "IsProject" => $request->qbo_is_project
+            "IsProject" => filter_var($request->qbo_is_project, FILTER_VALIDATE_BOOLEAN)
         ]);
         $store = $dataService->Add($customer);
         $error = $dataService->getLastError();
@@ -95,10 +95,10 @@ class QboCustomer extends Model
                 'qbo_email_address' => $store->PrimaryEmailAddr->Address,
                 'qbo_notes' => $store->Notes,
                 'qbo_website' => $store->WebAddr,
-                'qbo_active' => $store->status,
+                'qbo_active' => filter_var($store->status, FILTER_VALIDATE_BOOLEAN),
                 'qbo_company_name' => $store->CompanyName,
                 'qbo_balance' => $store->Balance,
-                'qbo_is_project' => $store->IsProject
+                'qbo_is_project' => filter_var($store->IsProject, FILTER_VALIDATE_BOOLEAN)
             ]
         );
         if (!$customer) {
