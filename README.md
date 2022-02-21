@@ -94,11 +94,11 @@ or follow the steps below
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-9.JPG?sanitize=true"/>
 
 
-## Controllers
+## How To Use
 
 ### Authentication
 
-Use this controller in order to authenticate and refresh the token access.
+Use this in order to authenticate and refresh the access token.
 
 **Controller**
 
@@ -150,6 +150,32 @@ Response:
       "x_refresh_token_expires_in": "2022/06/02 14:23:05",
       "expires_in": "2022/02/21 15:23:05"
     }
+  }
+```
+
+### Company
+
+Use this in order to get and update your company profile.
+
+**Controller**
+
+```bash
+  \Pns\LaravelQbo\Http\Controllers\QboCompanyController
+```
+
+**Get Company Profile**
+
+Postman URL:
+
+```bash
+  {{url}}/qbo/company
+```
+
+Response:
+
+```bash
+  {
+    "authorizationCodeUrl": "https://appcenter.intuit.com/connect/oauth2?client_id=ABEP4t682b0kTjxo8G6yuJGftr506G6oZ5DsOMP0b2MbSHdWP2&scope=com.intuit.quickbooks.accounting&redirect_uri=https%3A%2F%2Fdeveloper.intuit.com%2Fv2%2FOAuth2Playground%2FRedirectUrl&response_type=code&state=DATTK"
   }
 ```
 
