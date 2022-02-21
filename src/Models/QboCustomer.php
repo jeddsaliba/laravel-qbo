@@ -73,7 +73,9 @@ class QboCustomer extends Model
             ],
             "Balance" => $request->qbo_balance,
             "Active" => filter_var($request->qbo_active, FILTER_VALIDATE_BOOLEAN),
-            "WebAddr" => $request->qbo_website,
+            "WebAddr" => [
+                "URI" => $request->qbo_website
+            ],
             "IsProject" => filter_var($request->qbo_is_project, FILTER_VALIDATE_BOOLEAN)
         ]);
         $store = $dataService->Add($customer);
@@ -100,7 +102,7 @@ class QboCustomer extends Model
                 'qbo_phone_no' => $store->PrimaryPhone ? $store->PrimaryPhone->FreeFormNumber : NULL,
                 'qbo_email_address' => $store->PrimaryEmailAddr->Address,
                 'qbo_notes' => $store->Notes,
-                'qbo_website' => $store->WebAddr,
+                'qbo_website' => $store->WebAddr ? $store->WebAddr->URI : NULL,
                 'qbo_active' => filter_var($store->Active, FILTER_VALIDATE_BOOLEAN),
                 'qbo_company_name' => $store->CompanyName,
                 'qbo_balance' => $store->Balance,
