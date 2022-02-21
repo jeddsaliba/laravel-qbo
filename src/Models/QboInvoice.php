@@ -86,26 +86,25 @@ class QboInvoice extends Model
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
+        $store = QboInvoice::updateOrCreate([
+            'qbo_id' => $store->Id
+        ], [
+            'reference_id' =>  $request->reference_id,
+            'qbo_id' =>  $store->Id,
+            'qbo_customer_id' => $store->CustomerRef->value,
+            'qbo_invoice_no' => $store->DocNumber,
+            'qbo_print_status' => $store->PrintStatus,
+            'qbo_due_date' => $store->DueDate,
+            'qbo_email_status' => $store->EmailStatus,
+            'qbo_invoice_link' => $store->InvoiceLink,
+            'qbo_total_amount' => $store->TotalAmt,
+            'qbo_paid_amount' => $store->Deposit,
+            'qbo_balance_amount' => $store->Balance
+        ]);
         return [
             'status' => true,
             'message' => 'Invoice created.',
             'invoiceInfo' => $invoice
         ];
-        /* $store = QboInvoice::updateOrCreate([
-            'qbo_id' => $id
-        ], [
-            'reference_id' =>  $request->reference_id,
-            'qbo_id' =>  $request->qbo_id,
-            'qbo_customer_id' => $request->qbo_customer_id,
-            'qbo_invoice_no' => $request->qbo_invoice_no,
-            'qbo_print_status' => $request->qbo_print_status,
-            'qbo_due_date' => $request->qbo_due_date,
-            'qbo_email_status' => $request->qbo_email_status,
-            'qbo_invoice_link' => $request->qbo_invoice_link,
-            'qbo_total_amount' => $request->qbo_total_amount,
-            'qbo_paid_amount' => $request->qbo_paid_amount,
-            'qbo_balance_amount' => $request->qbo_balance_amount
-        ]);
-        return $store; */
     }
 }
