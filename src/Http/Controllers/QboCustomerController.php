@@ -61,7 +61,7 @@ class QboCustomerController extends Controller
         $error = $this->_dataService->getLastError();
         if ($error) {
             return [
-                'message' => $error->getIntuitErrorMessage() ?? 'Something went wrong.'
+                'message' => $error->getIntuitErrorMessage()
             ];
         }
         return [
