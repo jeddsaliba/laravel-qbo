@@ -50,39 +50,39 @@ or follow the steps below
 ### Generating Environment Variables
 1. Log in to your QuickBooks Online account at https://accounts.intuit.com
 
-After logging in, go to https://developer.intuit.com/app/developer/sandbox in order to create a new sandbox company.
+2. After logging in, go to https://developer.intuit.com/app/developer/sandbox in order to create a new sandbox company.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-1.JPG?sanitize=true"/>
 
-Add a sandbox company.
+3. Add a sandbox company.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-2.JPG?sanitize=true"/>
 
-After creating a sandbox company, copy the **Company ID** to be used in `QBO_COMPANY_ID` environment variable.
+4. After creating a sandbox company, copy the **Company ID** to be used in `QBO_COMPANY_ID` environment variable.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-3.JPG?sanitize=true"/>
 
-Then, go to https://developer.intuit.com/app/developer/dashboard
+5. Then, go to https://developer.intuit.com/app/developer/dashboard.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-4.JPG?sanitize=true"/>
 
-Create an app
+6. Create an app.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-5.JPG?sanitize=true"/>
 
-Complete the form in order to create a new app
+7. Complete the form in order to create a new app.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-6.JPG?sanitize=true"/>
 
-Upon creation, you will be redirected to the Getting Started page for your app
+8. Upon creation, you will be redirected to the Getting Started page for your app.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-7.JPG?sanitize=true"/>
 
-Go to **Keys and credentials**. Copy the **Client ID** and **Client Secret** to `QBO_CLIENT_ID` and `QBO_CLIENT_SECRET` respectively.
+9. Go to **Keys and credentials**. Copy the **Client ID** and **Client Secret** to `QBO_CLIENT_ID` and `QBO_CLIENT_SECRET` respectively.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-8.JPG?sanitize=true"/>
 
-Scroll down to create or copy the **Redirect URI** to `QBO_REDIRECT_URI`
+10. Scroll down to create or copy the **Redirect URI** to `QBO_REDIRECT_URI`.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-9.JPG?sanitize=true"/>
 
