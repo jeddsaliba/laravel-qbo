@@ -78,8 +78,8 @@ class QboInvoice extends Model
             ]/* ,
             "DueDate" => // date here : 2022-10-19 */
         ]);
-        $store = $this->_dataService->Add($invoice);
-        $error = $this->_dataService->getLastError();
+        $store = $dataService->Add($invoice);
+        $error = $dataService->getLastError();
         if ($error) {
             return [
                 'status' => false,
