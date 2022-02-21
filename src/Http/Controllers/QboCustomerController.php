@@ -49,9 +49,41 @@ class QboCustomerController extends Controller
             ];
         } else {
             return [
-                'message' => 'QuickBooks Online SDK.',
+                'message' => 'Customers list found.',
                 'customerList' => $list
             ];
         }
+    }
+    public function listAll(Request $request)
+    {
+        $this->refreshToken($request);
+        $list = $this->_dataService->FindAll('Customer');
+        $error = $this->_dataService->getLastError();
+        if ($error) {
+            return [
+                'message' => $error->getIntuitErrorMessage()
+            ];
+        }
+        $this->_qboCustomer->truncate();
+        foreach ($list as $item) {
+            var_dump($item);die;
+            $this->_qboCustomer->updateOrCreate(
+                [
+                    'qbo_id' => $item->Id
+                ],
+                [
+                    'qbo_given_name' => $item->GivenName,
+                    'qbo_family_name' => $item->FamilyName ? $item->FamilyName : $item->GivenName,
+                    'qbo_phone_no' => $mobile_number,
+                    'qbo_email_address' => $email,
+                    'reference_id' => $customer->id,
+                    'qbo_id' => $item->Id
+                ]
+            );
+        }
+        return [
+            'message' => 'Customers found.',
+            'customerList' => $list
+        ];
     }
 }
