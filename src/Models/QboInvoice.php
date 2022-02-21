@@ -58,7 +58,7 @@ class QboInvoice extends Model
                         "Amount" => $item['amount'], /* if PercentBased = false */
                         "DiscountLineDetail" => [
                             "PercentBased" => filter_var($item['percent_based'], FILTER_VALIDATE_BOOLEAN), 
-                            "DiscountPercent" => $item['discount_percent'] /* if PercentBased = true */
+                            "DiscountPercent" => $item['discount_percent'] ?? 0 /* if PercentBased = true */
                         ]  
                     ];
                 }
