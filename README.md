@@ -21,6 +21,13 @@ Export the migration files:
 ```bash
   php artisan vendor:publish --provider="Pns\LaravelQbo\Providers\LaravelQboServiceProvider" --tag="migrations"
 ```
+
+Do a quick migration:
+
+```bash
+  php artisan migrate
+```
+
 ### Environment Variables
 In order to run this package, you will need to add the following environment variables to your .env file
 
@@ -85,6 +92,11 @@ or follow the steps below
 10. Scroll down to create or copy the **Redirect URI** to `QBO_REDIRECT_URI`.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-9.JPG?sanitize=true"/>
+
+
+## Controllers
+
+- `Authentication Controller => Pns/LaravelQbo/Http/Controllers/QboAuthController`
 
 ## Features
 
