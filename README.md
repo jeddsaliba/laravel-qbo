@@ -100,26 +100,50 @@ or follow the steps below
 
 Use this controller in order to authenticate and refresh the token access.
 
-Controller:
+**Controller**
 
 ```bash
   \Pns\LaravelQbo\Http\Controllers\QboAuthController
 ```
-1. Authenticate Token
 
-  Postman URL:
+**Authenticate Token**
+
+Postman URL:
 
 ```bash
   {{url}}/qbo/authorize
 ```
 
-  Response:
+Response:
 
 ```bash
   {
     "authorizationCodeUrl": "https://appcenter.intuit.com/connect/oauth2?client_id=ABEP4t682b0kTjxo8G6yuJGftr506G6oZ5DsOMP0b2MbSHdWP2&scope=com.intuit.quickbooks.accounting&redirect_uri=https%3A%2F%2Fdeveloper.intuit.com%2Fv2%2FOAuth2Playground%2FRedirectUrl&response_type=code&state=DATTK"
   }
 ```
+
+**Refresh Token**
+
+Postman URL:
+
+```bash
+  {{url}}/qbo/token-save
+```
+
+Response:
+
+```bash
+  {
+    "message": "Token refreshed.",
+    "accessToken": {
+      "access_token": "eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0..GpEotUwWZJnVEbrOGYSLcg.AdIOfTVbSs73d8-b0wgmFnbgIPbrUKWoIW6_9FJQ27lKWO5xXy5VykvAyUEd_PUpBLhpXfhnnXMkvO_75YecvducgHCHlFy9NdBGfy1WCpkZ8OZQTKIdC1Up4FrsPurK7eAqY8y1-eJNcgARK4TyLtwy14dWeIvZXe3v3uHFtsSz5BsiGj8mC1o9MoKdvFep6BgOtBeZu_nacr7qcPlTXAztWNLLExhZtzSlJqMMMcjErHJ0SOpCZfauba_KrzCT5m0GBmyHvT-maV4EbseiK_hjhdegh0T1kkznxZK92j3tPfqCeAGL3IxJQT2iJlpgyGmTTotX2Mnoz6OPPykxN-8SRh8itzOdqPquQ-P4eqXI-XtnIiHzWBhyi-jvTAfGWuTYx5ohKOQKGvOiyDV4xbqkYw-XNbwsGLtF9EUY-Z8HWk6waj5g07O_-WxOY8lOlhJ4u7lkMaCLm6KMSHLNhfwRykp81wlxac80IQF8_InBseH1jVfShP89WMgYdGzuoy-8hY9jXwBgDudVm5uoqhQiIMaLbZQ1_V1XuHs9-1pBsLtq4KjoabTCJ3lma_cv-wff0plsXDaQFih-StmyWWvBZYRzRPvWbloTsGDEt8WxIANUd2AWZhZFwfJIxkgTpfLnDEySg2QyV-LoNjFU_FAYulFGn1-V6b7JBBYTEJkZXssVGRcy62zGzw_K0Y5DlJUnesbShcAA9rwrA7L430DPi_yYLm472-OKWjhM9OaeR2f6QcrsUxuhj96XcwQd.CynAG529fBQbeDV7OY7WRw",
+      "refresh_token": "AB116541797850qjxumAQNzUirNxrOs9C8Sj0U1o59iT0Ev2o2",
+      "x_refresh_token_expires_in": "2022/06/02 14:23:05",
+      "expires_in": "2022/02/21 15:23:05"
+    }
+  }
+```
+
 ## Features
 
 - Authentication
