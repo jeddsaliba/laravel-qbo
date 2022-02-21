@@ -14,15 +14,15 @@ class QboInvoice extends Model
     protected $fillable = [
         'reference_id',
         'qbo_id',
+        'qbo_customer_id',
         'qbo_invoice_no',
+        'qbo_print_status',
+        'qbo_due_date',
+        'qbo_email_status',
         'qbo_invoice_link',
         'qbo_total_amount',
         'qbo_paid_amount',
         'qbo_balance_amount'
-    ];
-
-    protected $appends = [
-        'qbo_invoice_pdf'
     ];
 
     protected $hidden = [
@@ -30,28 +30,17 @@ class QboInvoice extends Model
         'updated_at'
     ];
 
-    public $qboId;
-
-    public function getQboIdAttribute($value){
-        $this->qboId = $value;
-        return $value;
-    }
-
-    public function getQboInvoicePdfAttribute($value) {
-        $qbo_link = NULL;
-        if ($this->qboId) {
-            $qbo_link = "https://c50.sandbox.qbo.intuit.com/qbo50/v4/companies/".config('qbo.company_id')."/transactions/".$this->qboId.".pdf";
-        }
-        return $qbo_link;
-    }
-
     public function store($request, $id) {
-        $store = QuickBooksOnlineInvoice::updateOrCreate([
-            'reference_id' => $id
+        $store = QboInvoice::updateOrCreate([
+            'qbo_id' => $id
         ], [
-            'reference_id' =>  $id,
+            'reference_id' =>  $request->reference_id,
             'qbo_id' =>  $request->qbo_id,
+            'qbo_customer_id' => $request->qbo_customer_id,
             'qbo_invoice_no' => $request->qbo_invoice_no,
+            'qbo_print_status' => $request->qbo_print_status,
+            'qbo_due_date' => $request->qbo_due_date,
+            'qbo_email_status' => $request->qbo_email_status,
             'qbo_invoice_link' => $request->qbo_invoice_link,
             'qbo_total_amount' => $request->qbo_total_amount,
             'qbo_paid_amount' => $request->qbo_paid_amount,
