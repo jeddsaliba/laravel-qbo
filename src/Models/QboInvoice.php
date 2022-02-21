@@ -86,11 +86,6 @@ class QboInvoice extends Model
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
-        return [
-            'status' => true,
-            'message' => 'Invoice created.',
-            'invoiceInfo' => $store
-        ];
         $invoice = QboInvoice::updateOrCreate([
             'qbo_id' => $store->Id
         ], [
@@ -103,7 +98,7 @@ class QboInvoice extends Model
             'qbo_email_status' => $store->EmailStatus,
             'qbo_invoice_link' => $store->InvoiceLink,
             'qbo_total_amount' => $store->TotalAmt,
-            'qbo_paid_amount' => $store->Deposit,
+            'qbo_paid_amount' => $store->TotalAmt - $store->Balance,
             'qbo_balance_amount' => $store->Balance
         ]);
         if (!$invoice) {
@@ -112,5 +107,10 @@ class QboInvoice extends Model
                 'message' => 'Could not save invoice. Please try again.'
             ];
         }
+        return [
+            'status' => true,
+            'message' => 'Invoice created.',
+            'invoiceInfo' => $store
+        ];
     }
 }
