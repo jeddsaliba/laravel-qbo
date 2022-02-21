@@ -13,8 +13,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Pns\\LaravelQbo\\": "src/",
-            "Pns\\LaravelQbo\\Database\\Factories\\": "database/factories/"
+            "Pns\\LaravelQbo\\": "src/"
         }
     },
     "authors": [

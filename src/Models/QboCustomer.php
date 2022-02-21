@@ -77,16 +77,28 @@ class QboCustomer extends Model
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
+        var_dump($store);die;
         $customer = QboCustomer::updateOrCreate(
             [
                 'qbo_id' => $store->Id
             ], [
                 'reference_id' => $request->reference_id,
                 'qbo_id' => $store->Id,
-                'qbo_given_name' => $request->qbo_given_name,
-                'qbo_family_name' => $request->qbo_family_name,
-                'qbo_phone_no' => $request->qbo_phone_no,
-                'qbo_email_address' => $request->qbo_email_address
+                'qbo_display_name',
+        'qbo_title',
+        'qbo_given_name',
+        'qbo_middle_name',
+        'qbo_suffix',
+        'qbo_family_name',
+        'qbo_mobile_no',
+        'qbo_phone_no',
+        'qbo_email_address',
+        'qbo_notes',
+        'qbo_website',
+        'qbo_active',
+        'qbo_company_name',
+        'qbo_balance',
+        'qbo_is_project'
             ]
         );
         if (!$customer) {
