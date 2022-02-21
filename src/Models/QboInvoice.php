@@ -86,7 +86,7 @@ class QboInvoice extends Model
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
-        $store = QboInvoice::updateOrCreate([
+        $invoice = QboInvoice::updateOrCreate([
             'qbo_id' => $store->Id
         ], [
             'reference_id' =>  $request->reference_id,
@@ -104,7 +104,7 @@ class QboInvoice extends Model
         return [
             'status' => true,
             'message' => 'Invoice created.',
-            'invoiceInfo' => $invoice
+            'invoiceInfo' => $store
         ];
     }
 }
