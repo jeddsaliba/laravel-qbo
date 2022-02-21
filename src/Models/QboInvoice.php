@@ -91,7 +91,7 @@ class QboInvoice extends Model
         ], [
             'reference_id' =>  $request->reference_id,
             'qbo_id' =>  $store->Id,
-            'qbo_customer_id' => $store->CustomerRef->value,
+            'qbo_customer_id' => $store->CustomerRef->value ?? null,
             'qbo_invoice_no' => $store->DocNumber,
             'qbo_print_status' => $store->PrintStatus,
             'qbo_due_date' => $store->DueDate,
