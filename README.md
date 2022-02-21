@@ -58,5 +58,6 @@ In order to run this package, you will need to add the following environment var
 ## Support
 For support, email jeddsaliba@gmail.com or join our Slack channel.
 
-![Alt text](https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/icons/butterfly.svg?sanitize=true)
-<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/icons/butterfly.svg?sanitize=true">
+<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/icons/butterfly.svg?sanitize=true" width="100">
+
+FLY HIGH BUTTERFLY!
