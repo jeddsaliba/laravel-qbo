@@ -86,17 +86,12 @@ class QboInvoice extends Model
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
-        return [
-            'status' => true,
-            'message' => 'Invoice created.',
-            'invoiceInfo' => $store
-        ];
         $invoice = QboInvoice::updateOrCreate([
             'qbo_id' => $store->Id
         ], [
             'reference_id' =>  $request->reference_id,
             'qbo_id' =>  $store->Id,
-            'qbo_customer_id' => $store->CustomerRef->value ?? null,
+            'qbo_customer_id' => $store->CustomerRef,
             'qbo_invoice_no' => $store->DocNumber,
             'qbo_print_status' => $store->PrintStatus,
             'qbo_due_date' => $store->DueDate,
@@ -106,5 +101,16 @@ class QboInvoice extends Model
             'qbo_paid_amount' => $store->Deposit,
             'qbo_balance_amount' => $store->Balance
         ]);
+        if (!$invoice) {
+            return [
+                'status' => false,
+                'message' => 'Could not save invoice. Please try again.'
+            ];
+        }
+        return [
+            'status' => true,
+            'message' => 'Invoice created.',
+            'invoiceInfo' => $store
+        ];
     }
 }
