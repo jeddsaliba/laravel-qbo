@@ -60,6 +60,6 @@ In order to run this package, you will need to add the following environment var
 ## Support
 For support, email jeddsaliba@gmail.com or join our Slack channel.
 
-<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/icons/butterfly.svg?sanitize=true" width="100">
+<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/icons/butterfly.svg?sanitize=true" width="25">
 
 *Fly high, butterfly!*
