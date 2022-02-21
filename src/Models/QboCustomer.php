@@ -37,6 +37,12 @@ class QboCustomer extends Model
         'updated_at'
     ];
 
+    public function getQboActiveAttribute($value) {
+        return filter_var($value, FILTER_VALIDATE_BOOLEAN);
+    }
+    public function getQboIsProjectAttribute($value) {
+        return filter_var($value, FILTER_VALIDATE_BOOLEAN);
+    }
     public function store($dataService, $request)
     {
         $customer = Customer::create([
