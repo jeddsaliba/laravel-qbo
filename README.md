@@ -58,17 +58,25 @@ Add a sandbox company.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-2.JPG?sanitize=true"/>
 
+After creating a sandbox company, copy the Company ID to be used in `QBO_COMPANY_ID`.
+
+<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-3.JPG?sanitize=true"/>
+
 After creating a sandbox company, go to https://developer.intuit.com/app/developer/dashboard
-
-<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-2.JPG?sanitize=true"/>
-
-Create an app
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-4.JPG?sanitize=true"/>
 
-Complete the form in order to create a new app
+Create an app
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-5.JPG?sanitize=true"/>
+
+Complete the form in order to create a new app
+
+<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-6.JPG?sanitize=true"/>
+
+Upon creation, you will be redirected to the Getting Started page for your app
+
+<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-7.JPG?sanitize=true"/>
 
 
 
