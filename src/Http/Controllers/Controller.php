@@ -8,14 +8,20 @@ use QuickBooksOnline\API\DataService\DataService;
 class Controller extends BaseController
 {
     protected $_qboConfig;
+    protected $_qboCustomer;
+    protected $_qboInvoice;
     protected $_dataService;
     protected $_OAuth2LoginHelper;
     protected $_authUrl;
 
     public function __construct(
-        \Pns\LaravelQbo\Models\QboConfig $QboConfig
+        \Pns\LaravelQbo\Models\QboConfig $QboConfig,
+        \Pns\LaravelQbo\Models\QboCustomer $QboCustomer,
+        \Pns\LaravelQbo\Models\QboInvoice $QboInvoice
     ) {
         $this->_qboConfig = $QboConfig;
+        $this->_qboCustomer = $QboCustomer;
+        $this->_qboInvoice = $QboInvoice;
         $this->_configArray = [
             'auth_mode' => config('qbo.auth_mode'),
             'ClientID' => config('qbo.client_id'),

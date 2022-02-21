@@ -64,10 +64,9 @@ class QboCustomerController extends Controller
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
-        $this->_qboCustomer->truncate();
         foreach ($list as $item) {
-            var_dump($item);die;
-            $this->_qboCustomer->updateOrCreate(
+            /* var_dump($item);die; */
+            /* $this->_qboCustomer->updateOrCreate(
                 [
                     'qbo_id' => $item->Id
                 ],
@@ -79,7 +78,7 @@ class QboCustomerController extends Controller
                     'reference_id' => $customer->id,
                     'qbo_id' => $item->Id
                 ]
-            );
+            ); */
         }
         return [
             'message' => 'Customers found.',
