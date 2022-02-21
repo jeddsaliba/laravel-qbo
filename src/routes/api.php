@@ -23,6 +23,8 @@ Route::group(['prefix' => 'invoice'], function() {
     Route::post('', [QboInvoiceController::class, 'store']);
     Route::get('/list', [QboInvoiceController::class, 'list']);
     Route::get('/all', [QboInvoiceController::class, 'listAll']);
+    Route::post('/send/{id}', [QboInvoiceController::class, 'sendMail']);
+    Route::post('/delete/{id}', [QboInvoiceController::class, 'deleteInvoice']);
     Route::get('/{id}', [QboInvoiceController::class, 'show']);
 });
 ?>

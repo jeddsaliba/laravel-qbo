@@ -69,4 +69,46 @@ class QboInvoiceController extends Controller
             'invoiceList' => $list
         ];
     }
+    public function sendMail(Request $request, $id)
+    {
+        $this->refreshToken($request);
+        $invoice = $this->_dataService->FindbyId('invoice', $id);
+        $error = $this->_dataService->getLastError();
+        if ($error) {
+            return response(['message' => $error->getIntuitErrorMessage()], HttpServiceProvider::BAD_REQUEST);
+        }
+        $sendMail = $this->_dataService->SendEmail($invoice, $request->email);
+        $error = $this->_dataService->getLastError();
+        if ($error) {
+            return [
+                'message' => $error->getIntuitErrorMessage()
+            ];
+        }
+        return [
+            'message' => 'Invoice sent.',
+            'invoiceInfo' => $invoice
+        ];
+    }
+    public function deleteInvoice(Request $request, $id)
+    {
+        $this->refreshToken($request);
+        $invoice = $this->_dataService->FindbyId('invoice', $id);
+        $this->_qboInvoice->whereQboId($id)->delete();
+        $error = $this->_dataService->getLastError();
+        if ($error) {
+            return [
+                'message' => $error->getIntuitErrorMessage()
+            ];
+        }
+        $deleteInvoice = $this->_dataService->Delete($invoice);
+        $error = $this->_dataService->getLastError();
+        if ($error) {
+            return [
+                'message' => $error->getIntuitErrorMessage()
+            ];
+        }
+        return [
+            'message' => 'Invoice deleted.'
+        ];
+    }
 }
