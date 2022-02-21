@@ -130,6 +130,15 @@ Postman URL:
   {{url}}/qbo/token-save
 ```
 
+Request:
+
+```bash
+  {
+    "code": "AB11645453718yt4XS3Ngih24yMxDSQYXYG4Hpy2oR6lNkC87L",
+    "realmId": "4620816365213659530" 
+  }
+```
+
 Response:
 
 ```bash
