@@ -78,7 +78,7 @@ class QboCustomer extends Model
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
-        var_dump($store);die;
+        dd($store);
         $customer = QboCustomer::updateOrCreate(
             [
                 'qbo_id' => $store->Id
