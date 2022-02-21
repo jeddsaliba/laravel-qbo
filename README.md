@@ -106,12 +106,20 @@ Controller:
   \Pns\LaravelQbo\Http\Controllers\QboAuthController
 ```
 1. Authenticate Token
+
   Postman URL:
 
 ```bash
   {{url}}/qbo/authorize
 ```
 
+  Response:
+
+```bash
+  {
+    "authorizationCodeUrl": "https://appcenter.intuit.com/connect/oauth2?client_id=ABEP4t682b0kTjxo8G6yuJGftr506G6oZ5DsOMP0b2MbSHdWP2&scope=com.intuit.quickbooks.accounting&redirect_uri=https%3A%2F%2Fdeveloper.intuit.com%2Fv2%2FOAuth2Playground%2FRedirectUrl&response_type=code&state=DATTK"
+  }
+```
 ## Features
 
 - Authentication
