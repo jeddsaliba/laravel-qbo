@@ -97,7 +97,7 @@ class QboCustomer extends Model
                 'qbo_suffix' => $store->Suffix,
                 'qbo_family_name' => $store->FamilyName,
                 'qbo_mobile_no' => !isset($store->Mobile) ?? $store->Mobile->FreeFormNumber,
-                'qbo_phone_no' => !isset($store->PrimaryPhone)) ?? $store->PrimaryPhone->FreeFormNumber,
+                'qbo_phone_no' => !isset($store->PrimaryPhone) ?? $store->PrimaryPhone->FreeFormNumber,
                 'qbo_email_address' => $store->PrimaryEmailAddr->Address,
                 'qbo_notes' => $store->Notes,
                 'qbo_website' => $store->WebAddr,
