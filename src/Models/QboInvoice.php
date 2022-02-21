@@ -86,6 +86,11 @@ class QboInvoice extends Model
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
+        return [
+            'status' => true,
+            'message' => 'Invoice created.',
+            'invoiceInfo' => $store
+        ];
         $invoice = QboInvoice::updateOrCreate([
             'qbo_id' => $store->Id
         ], [
@@ -101,10 +106,5 @@ class QboInvoice extends Model
             'qbo_paid_amount' => $store->Deposit,
             'qbo_balance_amount' => $store->Balance
         ]);
-        return [
-            'status' => true,
-            'message' => 'Invoice created.',
-            'invoiceInfo' => $store
-        ];
     }
 }
