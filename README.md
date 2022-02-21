@@ -100,9 +100,15 @@ or follow the steps below
 
 Use this controller in order to authenticate and refresh the token access.
 
-`\Pns\LaravelQbo\Http\Controllers\QboAuthController`
+Controller
 
-URL: ```bash
+```bash
+  \Pns\LaravelQbo\Http\Controllers\QboAuthController
+```
+
+Postman URL:
+
+```bash
   {{url}}/qbo/authorize
 ```
 
