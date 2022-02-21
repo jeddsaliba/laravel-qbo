@@ -41,6 +41,24 @@ In order to run this package, you will need to add the following environment var
 `QBO_BASE_URL`
 
 `QBO_COMPANY_ID`
+
+You may follow the steps on how to get the environment variables here:
+https://developer.intuit.com/app/developer/homepage
+
+or follow the steps below
+
+### Generating Environment Variables
+Log in to your QuickBooks Online account at https://accounts.intuit.com
+
+After logging in, go to https://developer.intuit.com/app/developer/sandbox in order to create a new sandbox company.
+
+<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-1.jpg?sanitize=true"/>
+
+Add a sandbox company.
+
+<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-2.jpg?sanitize=true"/>
+
+
 ## Features
 
 - Authentication
