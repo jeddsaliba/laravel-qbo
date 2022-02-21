@@ -75,7 +75,9 @@ class QboInvoiceController extends Controller
         $invoice = $this->_dataService->FindbyId('invoice', $id);
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return response(['message' => $error->getIntuitErrorMessage()], HttpServiceProvider::BAD_REQUEST);
+            return [
+                'message' => $error->getIntuitErrorMessage()
+            ];
         }
         $sendMail = $this->_dataService->SendEmail($invoice, $request->email);
         $error = $this->_dataService->getLastError();
