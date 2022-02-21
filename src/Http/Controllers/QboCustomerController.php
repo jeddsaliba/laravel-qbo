@@ -64,22 +64,6 @@ class QboCustomerController extends Controller
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
-        foreach ($list as $item) {
-            /* var_dump($item);die; */
-            /* $this->_qboCustomer->updateOrCreate(
-                [
-                    'qbo_id' => $item->Id
-                ],
-                [
-                    'qbo_given_name' => $item->GivenName,
-                    'qbo_family_name' => $item->FamilyName ? $item->FamilyName : $item->GivenName,
-                    'qbo_phone_no' => $mobile_number,
-                    'qbo_email_address' => $email,
-                    'reference_id' => $customer->id,
-                    'qbo_id' => $item->Id
-                ]
-            ); */
-        }
         return [
             'message' => 'Customers found.',
             'customerList' => $list

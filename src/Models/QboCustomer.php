@@ -4,6 +4,7 @@ namespace Pns\LaravelQbo\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use QuickBooksOnline\API\Facades\Customer;
 
 class QboCustomer extends Model
 {
