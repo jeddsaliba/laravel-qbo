@@ -1,0 +1,574 @@
+{
+	"info": {
+		"_postman_id": "5a5667e0-2d23-4871-8d2b-4ef2289bcb11",
+		"name": "QuickBooks Online API v1.0.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Authorize",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/qbo/authorize",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"qbo",
+								"authorize"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "AB11645453718yt4XS3Ngih24yMxDSQYXYG4Hpy2oR6lNkC87L",
+									"type": "text"
+								},
+								{
+									"key": "realmId",
+									"value": "4620816365213659530",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/qbo/token-save",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"qbo",
+								"token-save"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "Get Company",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/qbo/company",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"qbo",
+								"company"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "reference_id",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "qbo_id",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "qbo_title",
+									"value": "Mr.",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "qbo_given_name",
+									"value": "Matt",
+									"type": "text"
+								},
+								{
+									"key": "qbo_middle_name",
+									"value": "Padilla",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "qbo_suffix",
+									"value": "Jr.",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "qbo_family_name",
+									"value": "Santosy",
+									"type": "text"
+								},
+								{
+									"key": "qbo_mobile_no",
+									"value": "+63 926 199 4154",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "qbo_phone_no",
+									"value": "(415) 123 1234",
+									"type": "text"
+								},
+								{
+									"key": "qbo_email_address",
+									"value": "jake@mailer.com",
+									"type": "text"
+								},
+								{
+									"key": "qbo_notes",
+									"value": "This is a customer description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "qbo_website",
+									"value": "https://www.google.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "qbo_active",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "qbo_company_name",
+									"value": "Google, Inc.",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "qbo_balance",
+									"value": "0.0",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "qbo_is_project",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/qbo/customer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"qbo",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sync From QuickBooks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/sales/customer/sync",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"sales",
+								"customer",
+								"sync"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/qbo/customer/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"qbo",
+								"customer",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/qbo/customer/list?page=1&limit=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"qbo",
+								"customer",
+								"list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Customers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/qbo/customer/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"qbo",
+								"customer",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "Create Invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "items[0][detail_type]",
+									"value": "SalesItemLineDetail",
+									"type": "text"
+								},
+								{
+									"key": "items[0][description]",
+									"value": "This is an item",
+									"type": "text"
+								},
+								{
+									"key": "items[0][qty]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "items[0][unit_price]",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "items[1][detail_type]",
+									"value": "SubTotalLineDetail",
+									"type": "text"
+								},
+								{
+									"key": "items[1][amount]",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "items[2][detail_type]",
+									"value": "DiscountLineDetail",
+									"type": "text"
+								},
+								{
+									"key": "items[2][amount]",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "items[2][percent_based]",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "item[2][discount_percent]",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "total_amount",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "qbo_customer_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "qbo_customer_display_name",
+									"value": "Jonas Blue",
+									"type": "text"
+								},
+								{
+									"key": "qbo_customer_email_address",
+									"value": "jonas@mailer.com",
+									"type": "text"
+								},
+								{
+									"key": "reference_id",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/qbo/invoice",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"qbo",
+								"invoice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Invoice to Email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "jeddsaliba@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/qbo/invoice/send/172",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"qbo",
+								"invoice",
+								"send",
+								"172"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/qbo/invoice/delete/172",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"qbo",
+								"invoice",
+								"delete",
+								"172"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Invoice By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/qbo/invoice/172",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"qbo",
+								"invoice",
+								"172"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invoice List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/qbo/invoice/list?page=1&limit=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"qbo",
+								"invoice",
+								"list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

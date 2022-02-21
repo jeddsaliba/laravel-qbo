@@ -96,6 +96,10 @@ or follow the steps below
 
 ## How To Use
 
+### Download Postman API
+
+Download the Postman API Collection [here](https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/postman/QuickBooks Online API v1.0.0.postman_collection?sanitize=true).
+
 ### Authentication
 
 Use this in order to authenticate and refresh the access token.
