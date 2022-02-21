@@ -24,23 +24,23 @@ Export the migration files:
 ### Environment Variables
 In order to run this package, you will need to add the following environment variables to your .env file
 
-`QBO_AUTH_MODE`
+`QBO_AUTH_MODE=oauth2`
 
-`QBO_ATH_REQUEST_URL`
+`QBO_ATH_REQUEST_URL=https://appcenter.intuit.com/connect/oauth2`
 
-`QBO_TOKEN_END_POINT_URL`
+`QBO_TOKEN_END_POINT_URL=https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer`
 
-`QBO_CLIENT_ID`
+`QBO_CLIENT_ID=`
 
-`QBO_CLIENT_SECRET`
+`QBO_CLIENT_SECRET=`
 
-`QBO_REDIRECT_URI`
+`QBO_REDIRECT_URI=`
 
-`QBO_SCOPE`
+`QBO_SCOPE=com.intuit.quickbooks.accounting`
 
-`QBO_BASE_URL`
+`QBO_BASE_URL=Development`
 
-`QBO_COMPANY_ID`
+`QBO_COMPANY_ID=`
 
 You may follow the steps on how to get the environment variables here:
 https://developer.intuit.com/app/developer/homepage
@@ -58,11 +58,11 @@ Add a sandbox company.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-2.JPG?sanitize=true"/>
 
-After creating a sandbox company, copy the Company ID to be used in `QBO_COMPANY_ID`.
+After creating a sandbox company, copy the **Company ID** to be used in `QBO_COMPANY_ID` environment variable.
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-3.JPG?sanitize=true"/>
 
-After creating a sandbox company, go to https://developer.intuit.com/app/developer/dashboard
+Then, go to https://developer.intuit.com/app/developer/dashboard
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-4.JPG?sanitize=true"/>
 
@@ -78,8 +78,13 @@ Upon creation, you will be redirected to the Getting Started page for your app
 
 <img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-7.JPG?sanitize=true"/>
 
+Go to **Keys and credentials**. Copy the **Client ID** and **Client Secret** to `QBO_CLIENT_ID` and `QBO_CLIENT_SECRET` respectively.
 
+<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-8.JPG?sanitize=true"/>
 
+Scroll down to create or copy the **Redirect URI** to `QBO_REDIRECT_URI`
+
+<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-9.JPG?sanitize=true"/>
 
 ## Features
 
