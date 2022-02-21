@@ -52,11 +52,11 @@ Log in to your QuickBooks Online account at https://accounts.intuit.com
 
 After logging in, go to https://developer.intuit.com/app/developer/sandbox in order to create a new sandbox company.
 
-<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-1.jpg?sanitize=true"/>
+<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-1.JPG?sanitize=true"/>
 
 Add a sandbox company.
 
-<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-2.jpg?sanitize=true"/>
+<img src="https://raw.github.com/jeddsaliba/laravel-qbo/master/src/assets/installation/step-2.JPG?sanitize=true"/>
 
 
 ## Features
