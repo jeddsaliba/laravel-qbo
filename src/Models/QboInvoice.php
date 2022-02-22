@@ -81,7 +81,7 @@ class QboInvoice extends Model
         $store = $dataService->Add($invoice);
         $error = $dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
                 'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
@@ -102,12 +102,12 @@ class QboInvoice extends Model
             'qbo_balance_amount' => $store->Balance
         ]);
         if (!$invoice) {
-            return [
+            return (object)[
                 'status' => false,
                 'message' => 'Could not save invoice. Please try again.'
             ];
         }
-        return [
+        return (object)[
             'status' => true,
             'message' => 'Invoice created.',
             'invoiceInfo' => $store

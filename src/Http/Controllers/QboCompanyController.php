@@ -12,11 +12,13 @@ class QboCompanyController extends Controller
         $companyInfo = $this->_dataService->getCompanyInfo();
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
-        return [
+        return (object)[
+            'status' => true,
             'message' => 'Company found.',
             'companyInfo' => $companyInfo
         ];

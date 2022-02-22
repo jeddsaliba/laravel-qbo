@@ -10,14 +10,16 @@ class QboCustomerController extends Controller
     {
         $this->refreshToken($request);
         $store = $this->_qboCustomer->store($this->_dataService, $request);
-        if (!$store['status']) {
-            return [
-                'message' => $store['message']
+        if (!$store->status) {
+            return (object)[
+                'status' => false,
+                'message' => $store->message
             ];
         }
-        return [
-            'message' => $store['message'],
-            'customerInfo' => $store['customerInfo']
+        return (object)[
+            'status' => true,
+            'message' => $store->message,
+            'customerInfo' => $store->customerInfo
         ];
     }
     public function show(Request $request, $id)
@@ -26,15 +28,16 @@ class QboCustomerController extends Controller
         $customerInfo = $this->_dataService->FindbyId('customer', $id);
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
-        } else {
-            return [
-                'message' => 'Customer found.',
-                'customerInfo' => $customerInfo
-            ];
         }
+        return (object)[
+            'status' => true,
+            'message' => 'Customer found.',
+            'customerInfo' => $customerInfo
+        ];
     }
     public function list(Request $request)
     {
@@ -44,15 +47,14 @@ class QboCustomerController extends Controller
         $list = $this->_dataService->FindAll('Customer', $page, $limit);
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
                 'message' => $error->getIntuitErrorMessage()
             ];
-        } else {
-            return [
-                'message' => 'Customers list found.',
-                'customerList' => $list
-            ];
         }
+        return (object)[
+            'message' => 'Customers list found.',
+            'customerList' => $list
+        ];
     }
     public function listAll(Request $request)
     {
@@ -60,11 +62,13 @@ class QboCustomerController extends Controller
         $list = $this->_dataService->FindAll('Customer');
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
-        return [
+        return (object)[
+            'status' => true,
             'message' => 'Customers found.',
             'customerList' => $list
         ];

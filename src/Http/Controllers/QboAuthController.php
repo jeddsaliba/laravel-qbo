@@ -8,7 +8,8 @@ class QboAuthController extends Controller
 {
     public function auth()
     {
-        return [
+        return (object)[
+            'status' => true,
             'authorizationCodeUrl' => $this->_authUrl
         ];
     }
@@ -17,7 +18,8 @@ class QboAuthController extends Controller
         $this->_dataService->updateOAuth2Token($accessToken);
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
@@ -29,11 +31,13 @@ class QboAuthController extends Controller
         ];
         $store = $this->_qboConfig->store($request, $accessToken);
         if (!$store) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => 'Could not save token. Please try again.'
             ];
         }
-        return [
+        return (object)[
+            'status' => true,
             'message' => 'Token refreshed.',
             'accessToken' => $accessToken
         ];

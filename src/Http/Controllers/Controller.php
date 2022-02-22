@@ -48,14 +48,16 @@ class Controller extends BaseController
         $refreshedAccessTokenObj = $this->_OAuth2LoginHelper->refreshAccessTokenWithRefreshToken($config->refresh_token);
         $error = $this->_OAuth2LoginHelper->getLastError();
         if ($error) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
         $this->_dataService->updateOAuth2Token($refreshedAccessTokenObj);
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
@@ -67,13 +69,15 @@ class Controller extends BaseController
         ];
         $save = $this->_qboConfig->store($request, $accessToken);
         if (!$save) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => 'Could not save token. Please try again.'
             ];
         }
         $this->_configArray['accessTokenKey'] = $refreshedAccessTokenObj->getAccessToken();
         $this->_dataService = DataService::Configure($this->_configArray);
-        return [
+        return (object)[
+            'status' => true,
             'message' => 'Token refreshed.',
             'accessToken' => $accessToken
         ];

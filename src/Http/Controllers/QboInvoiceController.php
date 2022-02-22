@@ -10,14 +10,16 @@ class QboInvoiceController extends Controller
     {
         $this->refreshToken($request);
         $store = $this->_qboInvoice->store($this->_dataService, $request);
-        if (!$store['status']) {
-            return [
-                'message' => $store['message']
+        if (!$store->status) {
+            return (object)[
+                'status' => false,
+                'message' => $store->message
             ];
         }
-        return [
-            'message' => $store['message'],
-            'invoiceInfo' => $store['invoiceInfo']
+        return (object)[
+            'status' => true,
+            'message' => $store->message,
+            'invoiceInfo' => $store->invoiceInfo
         ];
     }
     public function show(Request $request, $id)
@@ -26,15 +28,16 @@ class QboInvoiceController extends Controller
         $invoiceInfo = $this->_dataService->FindbyId('invoice', $id);
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
-        } else {
-            return [
-                'message' => 'Invoice found.',
-                'invoiceInfo' => $invoiceInfo
-            ];
         }
+        return (object)[
+            'status' => true,
+            'message' => 'Invoice found.',
+            'invoiceInfo' => $invoiceInfo
+        ];
     }
     public function list(Request $request)
     {
@@ -44,15 +47,16 @@ class QboInvoiceController extends Controller
         $list = $this->_dataService->FindAll('Invoice', $page, $limit);
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
-        } else {
-            return [
-                'message' => 'Invoice list found.',
-                'invoiceList' => $list
-            ];
         }
+        return (object)[
+            'status' => true,
+            'message' => 'Invoice list found.',
+            'invoiceList' => $list
+        ];
     }
     public function listAll(Request $request)
     {
@@ -60,11 +64,13 @@ class QboInvoiceController extends Controller
         $list = $this->_dataService->FindAll('Invoice');
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
-        return [
+        return (object)[
+            'status' => true,
             'message' => 'Invoices found.',
             'invoiceList' => $list
         ];
@@ -75,18 +81,21 @@ class QboInvoiceController extends Controller
         $invoice = $this->_dataService->FindbyId('invoice', $id);
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
         $sendMail = $this->_dataService->SendEmail($invoice, $request->email);
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
-        return [
+        return (object)[
+            'status' => true,
             'message' => 'Invoice sent.',
             'invoiceInfo' => $invoice
         ];
@@ -98,18 +107,21 @@ class QboInvoiceController extends Controller
         $this->_qboInvoice->whereQboId($id)->delete();
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
         $deleteInvoice = $this->_dataService->Delete($invoice);
         $error = $this->_dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
+                'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
-        return [
+        return (object)[
+            'status' => true,
             'message' => 'Invoice deleted.'
         ];
     }

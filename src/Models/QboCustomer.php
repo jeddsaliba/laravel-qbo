@@ -81,7 +81,7 @@ class QboCustomer extends Model
         $store = $dataService->Add($customer);
         $error = $dataService->getLastError();
         if ($error) {
-            return [
+            return (object)[
                 'status' => false,
                 'message' => $error->getIntuitErrorMessage()
             ];
@@ -110,12 +110,12 @@ class QboCustomer extends Model
             ]
         );
         if (!$customer) {
-            return [
+            return (object)[
                 'status' => false,
                 'message' => 'Could not save customer. Please try again.',
             ];
         }
-        return [
+        return (object)[
             'status' => true,
             'message' => 'Customer created.',
             'customerInfo' => $store
