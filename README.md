@@ -98,7 +98,7 @@ or follow the steps below
 
 ### Download Postman API
 
-Download the Postman API Collection [here](https://jeddsaliba.github.io/laravel-qbo/src/assets/postman/QuickBooks_Online_API_v1.0.0.postman_collection).
+Download the Postman API Collection [here](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/jeddsaliba/laravel-qbo/blob/master/src/assets/postman/QuickBooks_Online_API_v1.0.0.postman_collection.json?sanitize=true).
 
 ### Authentication
 
