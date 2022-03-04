@@ -41,7 +41,7 @@ class CreateQboCustomersTable extends Migration
                 ->comment('Free form text describing the Customer.');
             $table->text('qbo_website')->nullable()
                 ->comment('Website address.');
-            $table->text('qbo_active')->nullable()
+            $table->boolean('qbo_active')->default(true)
                 ->comment('If true, this entity is currently enabled for use by QuickBooks. If there is an amount in Customer.Balance when setting this Customer object to inactive through the QuickBooks UI, a CreditMemo balancing transaction is created for the amount.');
             $table->string('qbo_company_name', 100)->nullable()
                 ->comment('The name of the company associated with the person or organization.');

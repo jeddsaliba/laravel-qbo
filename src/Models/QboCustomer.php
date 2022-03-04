@@ -37,6 +37,26 @@ class QboCustomer extends Model
         'updated_at'
     ];
 
+    protected $casts = [
+        'reference_id' => 'integer',
+        'qbo_id' => 'integer',
+        'qbo_display_name' => 'string',
+        'qbo_title' => 'string',
+        'qbo_given_name' => 'string',
+        'qbo_middle_name' => 'string',
+        'qbo_suffix' => 'string',
+        'qbo_family_name' => 'string',
+        'qbo_mobile_no' => 'string',
+        'qbo_phone_no' => 'string',
+        'qbo_email_address' => 'string',
+        'qbo_notes' => 'string',
+        'qbo_website' => 'string',
+        'qbo_active' => 'boolean',
+        'qbo_company_name' => 'string',
+        'qbo_balance' => 'decimal: 2',
+        'qbo_is_project' => 'boolean'
+    ];
+
     public function getQboActiveAttribute($value) {
         return filter_var($value, FILTER_VALIDATE_BOOLEAN);
     }

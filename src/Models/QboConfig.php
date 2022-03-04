@@ -25,6 +25,15 @@ class QboConfig extends Model
     'updated_at'
   ];
 
+  protected $casts = [
+    'auth_code' => 'string',
+    'realm_id' => 'string',
+    'access_token' => 'string',
+    'refresh_token' => 'string',
+    'x_refresh_token_expires_in' => 'datetime',
+    'expires_in' => 'datetime'
+  ];
+
   // Disable Laravel's mass assignment protection
   protected $guarded = [];
 

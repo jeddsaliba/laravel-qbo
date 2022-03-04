@@ -31,6 +31,20 @@ class QboInvoice extends Model
         'updated_at'
     ];
 
+    protected $casts = [
+        'reference_id' => 'integer',
+        'qbo_id' => 'integer',
+        'qbo_customer_id' => 'integer',
+        'qbo_invoice_no' => 'string',
+        'qbo_print_status' => 'string',
+        'qbo_due_date' => 'date',
+        'qbo_email_status' => 'string',
+        'qbo_invoice_link' => 'string',
+        'qbo_total_amount' => 'decimal: 2',
+        'qbo_paid_amount' => 'decimal: 2',
+        'qbo_balance_amount' => 'decimal: 2'
+    ];
+
     public function store($dataService, $request) {
 
         $items = [];
