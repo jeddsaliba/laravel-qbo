@@ -23,7 +23,8 @@ class QboInvoice extends Model
         'qbo_invoice_link',
         'qbo_total_amount',
         'qbo_paid_amount',
-        'qbo_balance_amount'
+        'qbo_balance_amount',
+        'qbo_payment_status'
     ];
 
     protected $hidden = [
@@ -42,9 +43,25 @@ class QboInvoice extends Model
         'qbo_invoice_link' => 'string',
         'qbo_total_amount' => 'decimal: 2',
         'qbo_paid_amount' => 'decimal: 2',
-        'qbo_balance_amount' => 'decimal: 2'
+        'qbo_balance_amount' => 'decimal: 2',
+        'qbo_payment_status' => 'string'
     ];
-
+    /* public function getPaymentStatusAttribute() {
+        $status = 'Sent';
+        if ($this->qbo_email_status == 'NeedToSend') {
+            $status = 'Not Yet Sent';
+        }
+        if ($this->qbo_email_status == 'EmailSent') {
+            $status = 'Sent';
+        }
+        if ($this->qbo_paid_amount > 0.00 && $this->qbo_balance_amount > 0.00) {
+            $status = 'Partially Paid';
+        }
+        if ($this->qbo_total_amount == $this->qbo_paid_amount) {
+            $status = 'Deposited';
+        }
+        return $status;
+    } */
     public function store($dataService, $request) {
 
         $items = [];

@@ -21,13 +21,14 @@ class CreateQboInvoicesTable extends Migration
                 ->comment('Unique identifier for this object. Sort order is ASC by default.');
             $table->unsignedBigInteger('qbo_customer_id');
             $table->string('qbo_invoice_no', 21);
-            $table->enum('qbo_print_status', ['NotSet', 'NeedToPrint', 'PrintComplete '])->default('NotSet');
+            $table->enum('qbo_print_status', ['NotSet', 'NeedToPrint', 'PrintComplete'])->default('NotSet');
             $table->date('qbo_due_date');
-            $table->enum('qbo_email_status', ['NotSet', 'NeedToPrint', 'PrintComplete '])->default('NotSet');
+            $table->enum('qbo_email_status', ['NotSet', 'NeedToSend', 'EmailSent'])->default('NotSet');
             $table->text('qbo_invoice_link')->nullable();
             $table->decimal('qbo_total_amount', 10, 2)->default(0);
             $table->decimal('qbo_paid_amount', 10, 2)->default(0);
             $table->decimal('qbo_balance_amount', 10, 2)->default(0);
+            $table->enum('qbo_payment_status', ['Not Yet Sent', 'Sent', 'Partially Paid', 'Deposited'])->default('Not Yet Sent');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
