@@ -4,6 +4,7 @@ use Pns\LaravelQbo\Http\Controllers\QboAuthController;
 use Pns\LaravelQbo\Http\Controllers\QboCompanyController;
 use Pns\LaravelQbo\Http\Controllers\QboCustomerController;
 use Pns\LaravelQbo\Http\Controllers\QboInvoiceController;
+use Pns\LaravelQbo\Http\Controllers\QboPaymentController;
 
 Route::post('/authorize', [QboAuthController::class, 'auth']);
 Route::post('/token-save', [QboAuthController::class, 'tokenSave']);
