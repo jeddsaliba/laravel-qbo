@@ -27,4 +27,8 @@ Route::group(['prefix' => 'invoice'], function() {
     Route::post('/delete/{id}', [QboInvoiceController::class, 'deleteInvoice']);
     Route::get('/{id}', [QboInvoiceController::class, 'show']);
 });
+
+Route::group(['prefix' => 'payment'], function() {
+    Route::post('', [QboPaymentController::class, 'store']);
+});
 ?>

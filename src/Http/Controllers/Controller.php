@@ -10,6 +10,7 @@ class Controller extends BaseController
     protected $_qboConfig;
     protected $_qboCustomer;
     protected $_qboInvoice;
+    protected $_qboPayment;
     protected $_dataService;
     protected $_OAuth2LoginHelper;
     protected $_authUrl;
@@ -17,11 +18,13 @@ class Controller extends BaseController
     public function __construct(
         \Pns\LaravelQbo\Models\QboConfig $QboConfig,
         \Pns\LaravelQbo\Models\QboCustomer $QboCustomer,
-        \Pns\LaravelQbo\Models\QboInvoice $QboInvoice
+        \Pns\LaravelQbo\Models\QboInvoice $QboInvoice,
+        \Pns\LaravelQbo\Models\QboPayment $QboPayment
     ) {
         $this->_qboConfig = $QboConfig;
         $this->_qboCustomer = $QboCustomer;
         $this->_qboInvoice = $QboInvoice;
+        $this->_qboPayment = $QboPayment;
         $this->_configArray = [
             'auth_mode' => config('qbo.auth_mode'),
             'ClientID' => config('qbo.client_id'),
