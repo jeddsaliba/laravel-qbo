@@ -57,7 +57,7 @@ class QboPayment extends Model
             'reference_id' =>  $request->reference_id,
             'qbo_id' =>  $store->Id,
             'qbo_customer_id' => $store->CustomerRef,
-            'qbo_total_amount' => $store->TotalAmt
+            'qbo_paid_amount' => $store->TotalAmt
         ]);
         if (!$payment) {
             return (object)[
