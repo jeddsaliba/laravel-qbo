@@ -10,6 +10,29 @@ class QboPayment extends Model
 {
     use HasFactory;
 
+    protected $table = 'qbo_payments';
+
+    protected $fillable = [
+        'reference_id',
+        'qbo_id',
+        'qbo_invoice_id',
+        'qbo_customer_id',
+        'qbo_paid_amount'
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
+
+    protected $casts = [
+        'reference_id' => 'integer',
+        'qbo_id' => 'integer',
+        'qbo_invoice_id' => 'integer',
+        'qbo_customer_id' => 'integer',
+        'qbo_paid_amount' => 'decimal: 2'
+    ];
+
     public function store($dataService, $request) {
 
         $items = [];
@@ -20,7 +43,7 @@ class QboPayment extends Model
                 "value"=> $request->qbo_customer_id,
             ]
         ]);
-        $store = $dataService->Add($invoice);
+        $store = $dataService->Add($payment);
         $error = $dataService->getLastError();
         if ($error) {
             return (object)[
@@ -28,10 +51,24 @@ class QboPayment extends Model
                 'message' => $error->getIntuitErrorMessage()
             ];
         }
+        $payment = QboPayment::updateOrCreate([
+            'qbo_id' => $store->Id
+        ], [
+            'reference_id' =>  $request->reference_id,
+            'qbo_id' =>  $store->Id,
+            'qbo_customer_id' => $store->CustomerRef,
+            'qbo_total_amount' => $store->TotalAmt
+        ]);
+        if (!$payment) {
+            return (object)[
+                'status' => false,
+                'message' => 'Could not save payment. Please try again.'
+            ];
+        }
         return (object)[
             'status' => true,
-            'message' => 'Invoice created.',
-            'invoiceInfo' => $store
+            'message' => 'Payment created.',
+            'paymentInfo' => $store
         ];
     }
 }
