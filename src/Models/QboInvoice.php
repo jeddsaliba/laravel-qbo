@@ -144,4 +144,48 @@ class QboInvoice extends Model
             'invoiceInfo' => $store
         ];
     }
+    public function deposit($dataService, $request) {
+
+        $invoice = Invoice::update([
+            "SyncToken" => "0",
+            "Id" => $request->qbo_invoice_id,
+            "sparse" => true,
+            "Deposit" => $request->total_amount
+        ]);
+
+        $store = $dataService->Update($invoice);
+        $error = $dataService->getLastError();
+        if ($error) {
+            return (object)[
+                'status' => false,
+                'message' => $error->getIntuitErrorMessage()
+            ];
+        }
+        $invoice = QboInvoice::updateOrCreate([
+            'qbo_id' => $store->Id
+        ], [
+            'reference_id' =>  $request->reference_id,
+            'qbo_id' =>  $store->Id,
+            'qbo_customer_id' => $store->CustomerRef,
+            'qbo_invoice_no' => $store->DocNumber,
+            'qbo_print_status' => $store->PrintStatus,
+            'qbo_due_date' => $store->DueDate,
+            'qbo_email_status' => $store->EmailStatus,
+            'qbo_invoice_link' => $store->InvoiceLink,
+            'qbo_total_amount' => $store->TotalAmt,
+            'qbo_paid_amount' => $store->TotalAmt - $store->Balance,
+            'qbo_balance_amount' => $store->Balance
+        ]);
+        if (!$invoice) {
+            return (object)[
+                'status' => false,
+                'message' => 'Could not save invoice. Please try again.'
+            ];
+        }
+        return (object)[
+            'status' => true,
+            'message' => 'Invoice created.',
+            'invoiceInfo' => $store
+        ];
+    }
 }

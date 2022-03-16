@@ -16,6 +16,13 @@ class QboPaymentController extends Controller
                 'message' => $store->message
             ];
         }
+        $depositToInvoice = $this->_qboInvoice->deposit($this->_dataService, $request);
+        if (!$depositToInvoice->status) {
+            return (object)[
+                'status' => false,
+                'message' => $depositToInvoice->message
+            ];
+        }
         return (object)[
             'status' => true,
             'message' => $store->message,
