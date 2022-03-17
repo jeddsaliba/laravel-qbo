@@ -67,7 +67,7 @@ class QboPayment extends Model
         }
         return (object)[
             'status' => true,
-            'message' => 'Payment created.',
+            'message' => 'Payment sent. We will update you once the payment has been received.',
             'paymentInfo' => $store
         ];
     }
