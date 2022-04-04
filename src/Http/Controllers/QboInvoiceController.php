@@ -104,9 +104,6 @@ class QboInvoiceController extends Controller
     public function deleteInvoice(Request $request, $id)
     {
         $this->refreshToken($request);
-        $invoice = $this->_qboInvoice->create([
-            "Id" => $id
-        ]);
         $invoice = $this->_dataService->FindbyId('invoice', $id);
         $this->_qboInvoice->whereQboId($id)->delete();
         $error = $this->_dataService->getLastError();
