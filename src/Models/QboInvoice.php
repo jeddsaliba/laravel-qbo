@@ -5,7 +5,6 @@ namespace Pns\LaravelQbo\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use QuickBooksOnline\API\Facades\Invoice;
-use Illuminate\Support\Facades\Storage;
 
 class QboInvoice extends Model
 {
@@ -187,23 +186,6 @@ class QboInvoice extends Model
             'status' => true,
             'message' => 'Invoice created.',
             'invoiceInfo' => $store
-        ];
-    }
-    public function downloadInvoice($dataService, $id) {
-        $invoice = Invoice::create([
-            "Id" => $id
-        ]);
-        $directoryForThePDF = $dataService->DownloadPDF($invoice, Storage::disk('public'));
-        if (!$directoryForThePDF) {
-            return (object)[
-                'status' => false,
-                'message' => 'Could not generate PDF. Please try again.'
-            ];
-        }
-        return (object)[
-            'status' => true,
-            'message' => 'Invoice PDF created.',
-            'invoiceInfo' => $directoryForThePDF
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace Pns\LaravelQbo\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class QboInvoiceController extends Controller
 {
@@ -131,17 +132,27 @@ class QboInvoiceController extends Controller
     public function downloadInvoice(Request $request, $id)
     {
         $this->refreshToken($request);
-        $downloadInvoice = $this->_qboInvoice->downloadInvoice($this->_dataService, $id);
-        if (!$downloadInvoice->status) {
+        $invoiceInfo = $this->_dataService->FindbyId('invoice', $id);
+        $error = $this->_dataService->getLastError();
+        if ($error) {
             return (object)[
                 'status' => false,
-                'message' => $downloadInvoice->message
+                'message' => $error->getIntuitErrorMessage()
             ];
         }
+        Storage::disk('public')->makeDirectory('pdf/project/qboinvoice/' . $id);
+        $directoryForThePDF = $this->_dataService->DownloadPDF($invoiceInfo, '../storage/app/public/pdf/project/qboinvoice/' . $id);
+        if (!$directoryForThePDF) {
+            return (object)[
+                'status' => false,
+                'message' => 'Could not generate PDF. Please try again.'
+            ];
+        }
+        $file = substr(strrchr(rtrim($directoryForThePDF, '/'), '/'), 1);
         return (object)[
             'status' => true,
-            'message' => $downloadInvoice->message,
-            'invoiceInfo' => $downloadInvoice->invoiceInfo
+            'message' => 'Invoice PDF created.',
+            'invoiceInfo' => request()->root() . Storage::url('pdf/project/qboinvoice/' . $id . '/' . $file)
         ];
     }
 }
