@@ -26,6 +26,7 @@ Route::group(['prefix' => 'invoice'], function() {
     Route::get('/all', [QboInvoiceController::class, 'listAll']);
     Route::post('/send/{id}', [QboInvoiceController::class, 'sendMail']);
     Route::post('/delete/{id}', [QboInvoiceController::class, 'deleteInvoice']);
+    Route::post('/download/{id}', [QboInvoiceController::class, 'downloadInvoice']);
     Route::get('/{id}', [QboInvoiceController::class, 'show']);
 });
 

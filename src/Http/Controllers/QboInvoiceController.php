@@ -3,6 +3,7 @@
 namespace Pns\LaravelQbo\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class QboInvoiceController extends Controller
 {
@@ -103,6 +104,9 @@ class QboInvoiceController extends Controller
     public function deleteInvoice(Request $request, $id)
     {
         $this->refreshToken($request);
+        $invoice = $this->_qboInvoice->create([
+            "Id" => $id
+        ]);
         $invoice = $this->_dataService->FindbyId('invoice', $id);
         $this->_qboInvoice->whereQboId($id)->delete();
         $error = $this->_dataService->getLastError();
@@ -123,6 +127,26 @@ class QboInvoiceController extends Controller
         return (object)[
             'status' => true,
             'message' => 'Invoice deleted.'
+        ];
+    }
+    public function downloadInvoice(Request $request, $id)
+    {
+        $this->refreshToken($request);
+        $invoice = $this->_qboInvoice->create([
+            "Id" => $id
+        ]);
+        $directoryForThePDF = $this->_dataService->DownloadPDF($invoice, Storage::disk('public'));
+        $error = $this->_dataService->getLastError();
+        if ($error) {
+            return (object)[
+                'status' => false,
+                'message' => $error->getIntuitErrorMessage()
+            ];
+        }
+        return (object)[
+            'status' => true,
+            'message' => 'Invoice PDF generated.',
+            'invoiceInfo' => $directoryForThePDF
         ];
     }
 }
