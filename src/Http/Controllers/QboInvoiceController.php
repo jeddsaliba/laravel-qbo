@@ -3,7 +3,6 @@
 namespace Pns\LaravelQbo\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class QboInvoiceController extends Controller
 {
@@ -132,21 +131,17 @@ class QboInvoiceController extends Controller
     public function downloadInvoice(Request $request, $id)
     {
         $this->refreshToken($request);
-        $invoice = $this->_qboInvoice->create([
-            "Id" => $id
-        ]);
-        $directoryForThePDF = $this->_dataService->DownloadPDF($invoice, Storage::disk('public'));
-        $error = $this->_dataService->getLastError();
-        if ($error) {
+        $downloadInvoice = $this->_qboInvoice->downloadInvoice($this->_dataService, $id);
+        if (!$downloadInvoice->status) {
             return (object)[
                 'status' => false,
-                'message' => $error->getIntuitErrorMessage()
+                'message' => $downloadInvoice->message
             ];
         }
         return (object)[
             'status' => true,
-            'message' => 'Invoice PDF generated.',
-            'invoiceInfo' => $directoryForThePDF
+            'message' => $downloadInvoice->message,
+            'invoiceInfo' => $downloadInvoice->invoiceInfo
         ];
     }
 }
